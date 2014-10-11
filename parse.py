@@ -4,20 +4,29 @@
 
 #Library to parse the input files we are given
 
+
+##DOESN"T RETURN CORRECTLY. LOOK AT get_commuter FOR HOW TO CREATE DIC
 def get_dest_zip(dest_zip_file):
 	"""
 	Function to get the destation zip codes out of the given files
 	Takes input file destination 
 	Assumes input file looks like: <name> is <zipcode>
-	Returns dictionary of [Name of Place][Zip]
+	Returns dictionary of [Zip][Name of Place]
 	"""
 	dest_zip_file_contents = open (dest_zip_file)
-
+	
+	dest_zip= {}
 	for line in dest_zip_file_contents:
 		line = line.rstrip('.\n')
+		line = line.rstrip(' ')
 		line_split = line.split("is")
-		dest_zip = {line_split[0]:line_split[1]}
-		return dest_zip
+		#remove trailing white space
+		line_split[0] = line_split[0].rstrip(' ')
+		#remove preceding white space
+		line_split[1] = (line_split[1].rsplit(' '))[1]
+		#add to dictionary 
+		dest_zip.update({line_split[1]:line_split[0]})
+	return dest_zip
 
 def get_commuter(commuter_file):
 	"""
