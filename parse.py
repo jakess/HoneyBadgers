@@ -11,7 +11,7 @@ def get_dest_zip(dest_zip_file):
 	Function to get the destation zip codes out of the given files
 	Takes input file destination 
 	Assumes input file looks like: <name> is <zipcode>
-	Returns dictionary of [Zip][Name of Place]
+	Returns dictionary of [Name of Place][Zip]
 	"""
 	dest_zip_file_contents = open (dest_zip_file)
 	
@@ -25,7 +25,7 @@ def get_dest_zip(dest_zip_file):
 		#remove preceding white space
 		line_split[1] = (line_split[1].rsplit(' '))[1]
 		#add to dictionary 
-		dest_zip.update({line_split[1]:line_split[0]})
+		dest_zip.update({line_split[0]:line_split[1]})
 	return dest_zip
 
 def get_commuter(commuter_file):
@@ -36,7 +36,7 @@ def get_commuter(commuter_file):
 	col1 is ID number
 	col2 is home zip code
 	col3 is Org	
-	Returns dictionary with [Zip][Org][Id]	
+	Returns dictionary with [Id][Org][Zip]	
 
 	"""
 	#initalise output dictionary
@@ -58,5 +58,5 @@ def get_commuter(commuter_file):
 			orgs = line_split[2]
 			ids = line_split[0]
 			#dictionary is [Zip][Org][ID]
-			commuter_dict.update({zips:{orgs:ids}})			
+			commuter_dict.update({ids:{orgs:zips}})			
 	return commuter_dict
