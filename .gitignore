@@ -1,2 +1,4 @@
 #ignore any temporary files from gedit
 *~
+#somekind of python compiled file???
+*.pyc
