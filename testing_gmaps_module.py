@@ -3,18 +3,16 @@ import json
 from parse import *
 api = Directions()
  
-results = api.directions("Temple University,  Philadelphia PA","2296 Byecroft Rd, New Hope PA", "walking")
+
+#function for time testing
+def get_gmaps_interface(api):
+	results = api.directions("Temple University,  Philadelphia PA","2296 Byecroft Rd, New Hope PA", "walking")
+	return results
+
+results = get_gmaps_interface(api)
+
 #place json response into dictionary
-dict_results = json.loads(json.dumps(results,sort_keys=True))[0]
-#place legs (where distance, duration, and waypoints are) into dict
-legs_dict = json.loads(json.dumps(dict_results['legs'],sort_keys=True))[0]
-#place back into master dict
-dict_results['legs']=legs_dict
-
-
-#ONLY RETURNS ONE LEG DOESNT WORK
-#place the steps into dictionary 
-steps_dict = json.loads(json.dumps(dict_results['legs']['steps'],sort_keys=True))[0]
+dict_results = get_directions(results)
 
 #print dict_results
 #print json.dumps(results, sort_keys=True, indent = 4, separators=("'",': '))
@@ -29,3 +27,5 @@ print dest_zip
 #get list of all commuters
 commuters = get_commuter(commuter_file)
 #print commuters
+
+

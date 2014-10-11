@@ -4,6 +4,8 @@
 
 #Library to parse the input files we are given
 
+#Import needed for get_directions
+import json
 
 ##DOESN"T RETURN CORRECTLY. LOOK AT get_commuter FOR HOW TO CREATE DIC
 def get_dest_zip(dest_zip_file):
@@ -60,3 +62,31 @@ def get_commuter(commuter_file):
 			#dictionary is [Zip][Org][ID]
 			commuter_dict.update({ids:{orgs:zips}})			
 	return commuter_dict
+
+def get_directions(json_directions):
+	"""
+	Function takes the json message from gmaps.Directions and turns it into a python dictionary 
+	Takes json message from gmaps.Directions
+	Returns python dictionary with all information from the json message
+	"""
+
+	#place json response into dictionary
+	dict_results = json.loads(json.dumps(json_directions,sort_keys=True))[0]
+	#place legs (where distance, duration, and waypoints are) into dict
+	legs_dict = json.loads(json.dumps(dict_results['legs'],sort_keys=True))[0]
+	#place back into master dict
+	dict_results['legs']=legs_dict
+
+	#place the steps into dictionary 
+	steps_dict={}
+	i=0
+	#loop over all steps (they are lists) and place into a steps_dict
+	while i < len(dict_results['legs']['steps']):
+		step_n = json.loads(json.dumps(dict_results['legs']['steps'],sort_keys=True))[i]
+		steps_dict.update({i:step_n})
+		i+=1
+	#place steps_dict into master dict
+	dict_results['legs']['steps']=steps_dict
+
+	return dict_results
+

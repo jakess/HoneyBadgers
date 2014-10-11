@@ -2,3 +2,5 @@
 *~
 #somekind of python compiled file???
 *.pyc
+#what I use as my test out
+*.output 
