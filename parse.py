@@ -7,7 +7,6 @@
 #Import needed for get_directions
 import json
 
-##DOESN"T RETURN CORRECTLY. LOOK AT get_commuter FOR HOW TO CREATE DIC
 def get_dest_zip(dest_zip_file):
 	"""
 	Function to get the destation zip codes out of the given files
