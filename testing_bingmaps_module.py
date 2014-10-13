@@ -1,11 +1,10 @@
 #trash file for testing bingtraffic
 
 from bingmaps import *
-
-lat_2=40
-lon_1=-70
-lat_1=30
-lon_2=-60
+lat_2=-70
+lon_1=39
+lat_1=-76
+lon_2=42
 
 bing = BingTraffic()
 

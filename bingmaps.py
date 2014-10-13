@@ -39,7 +39,7 @@ class BingTraffic(BingMaps):
 		lat_2 = str(lat_2)
 		lon_1 = str(lon_1)
 		lon_2 = str(lon_2)
-		traffic_flag = '/true?t=2&'
+		traffic_flag = '/true?t=2,3&'
 		key = 'key='+self.__API_KEY__
 
 		#constructing URL

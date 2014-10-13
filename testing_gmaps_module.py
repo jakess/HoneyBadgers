@@ -15,7 +15,7 @@ results = get_gmaps_interface(api)
 dict_results = get_directions(results)
 
 #print dict_results
-#print json.dumps(results, sort_keys=True, indent = 4, separators=("'",': '))
+print json.dumps(results, sort_keys=True, indent = 4, separators=("'",': '))
 #print json.dumps(dict_results['legs'], sort_keys=True, indent = 2, separators=("'",': '))
 
 #test of input files library
