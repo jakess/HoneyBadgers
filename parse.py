@@ -1,13 +1,10 @@
 #!/usr/bin/env python
 
-#Jake Version 0.1
-
 #Library to parse the input files we are given
 
 #Import needed for get_directions
 import json
 
-##DOESN"T RETURN CORRECTLY. LOOK AT get_commuter FOR HOW TO CREATE DIC
 def get_dest_zip(dest_zip_file):
 	"""
 	Function to get the destation zip codes out of the given files
@@ -59,7 +56,7 @@ def get_commuter(commuter_file):
 			zips = line_split[1]
 			orgs = line_split[2]
 			ids = line_split[0]
-			#dictionary is [Zip][Org][ID]
+			#dictionary is [ID][Org][Zip]
 			commuter_dict.update({ids:{orgs:zips}})			
 	return commuter_dict
 
@@ -89,4 +86,6 @@ def get_directions(json_directions):
 	dict_results['legs']['steps']=steps_dict
 
 	return dict_results
+
+
 
