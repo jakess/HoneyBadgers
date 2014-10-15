@@ -16,6 +16,10 @@ def run_day():
 	stime = now.time()
 	#Run forever
 	while True:
+
+	#check every hour if within time range
+	sleep(3600)
+
 		#Run everyday during 4-7pm rush hour
 		while stime > datetime.time(16,0) and stime <= datetime.time(19,0):
 			#run the program every 30 minutes
