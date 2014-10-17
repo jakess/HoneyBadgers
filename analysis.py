@@ -6,11 +6,18 @@ from itertools import tee, islice
 #for zip_hist
 import collections
 
+def get_zip_number(zipcode_hist):
+  """
+  Function to get the zip codes and count out of Counter object
+  Takes Counter with zipcode info as key and number of times occured
+  Returns 
+  """
+
 def zip_hist(commuter_dict):
   """
   Function to get the histogram of all zip codes
   Takes dictionary with commuter information
-  Returns histogram, as dict, 
+  Returns histogram, as Counter which is a type of dict, 
   """
   #initalise zip code list
   zipcode_list=[]
